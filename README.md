@@ -360,7 +360,11 @@ Each microcontroller has a **datasheet** that explains its features, pin configu
 
 🔗 [PIC16F877A Datasheet (Microchip)](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/39582C.pdf)
 
+The PIC16F877A Datasheet details:
 
+- **Pin functions** (e.g., `PORTB` for GPIOs)
+- **Register settings** (e.g., `TRISB` for input/output direction)
+- **Peripheral configurations** (e.g., Timer0, ADC)
 
 ### 📋 Core MCU Concepts for Beginners
 
@@ -370,6 +374,86 @@ Each microcontroller has a **datasheet** that explains its features, pin configu
 - **ADC (Analog to Digital Converter)**: Converts analog sensor values to digital format.
 - **PWM (Pulse Width Modulation)**: Used for motor control, brightness, etc.
 - **UART/USART**: For serial communication (debugging, Bluetooth, etc.)
+
+
+---
+
+### 🕹️ GPIOs (General Purpose Input/Output)
+
+**Purpose:** Connect to LEDs, switches, or sensors.
+
+**Registers:**
+
+- `PORTx`: Reads/writes pin states  
+- `TRISx`: Sets pin direction (`0 = output`, `1 = input`)
+
+**Example:**
+
+```c
+TRISB = 0x00;    // Set PORTB as output
+PORTB = 0x01;    // RB0 HIGH, others LOW
+```
+
+---
+
+### ⏰ Clocks and Timing
+
+**Clock Source:** Determines MCU speed (e.g., 4 MHz crystal)  
+**Configuration:**
+
+```c
+#define _XTAL_FREQ 4000000  // Set operating frequency
+```
+
+**Timers:** Timer0, Timer1, Timer2 for generating delays or triggering events
+
+**Example (Timer0 delay):**
+
+```c
+T0CON = 0x68;    // Timer0 on, 8-bit, prescaler 1:256
+TMR0 = 0;        // Reset timer
+while (!T0IF);   // Wait for overflow
+T0IF = 0;        // Clear flag
+```
+
+---
+
+### 🔄 Interrupts
+
+**Use:** Execute code on events like a button press or sensor trigger.
+
+**Example:**
+
+```c
+void __interrupt() isr(void) {
+    if (INTCONbits.RBIF) { // PortB change interrupt
+        sensorFlag = 1;
+        INTCONbits.RBIF = 0; // Clear the interrupt flag
+    }
+}
+```
+
+---
+
+### 📡 ADC (Analog to Digital Converter)
+
+**Use:** Converts analog signals (e.g., from water level sensors) into digital values.
+
+**Example:**
+
+```c
+ADCON0 = 0x41;        // Turn on ADC, select Channel 0
+GO_nDONE = 1;         // Start conversion
+while (GO_nDONE);     // Wait for conversion to complete
+uint16_t result = (ADRESH << 8) | ADRESL; // 10-bit ADC result
+```
+
+---
+
+### 📚 Resources
+
+- [📄 PIC16F877A Datasheet](https://ww1.microchip.com/downloads/en/devicedoc/39582b.pdf)  
+- [🎥 PIC Timers Tutorial – YouTube](https://www.youtube.com/watch?v=rbCoxZy8ODw)
 
 
 
