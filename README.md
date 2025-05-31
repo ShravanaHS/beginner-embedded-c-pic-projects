@@ -11,9 +11,9 @@ To build and simulate our embedded systems, we’ll use only free and beginner-f
 
 ## 📚 Table of Contents
 
-1. 🔑 [Prerequisites & Setup](#-prerequisites-&-setup)  What you need before diving in, including tools and basic knowledge.
+1. 🔑 [Prerequisites & Setup](#prerequisites--setup)   What you need before diving in, including tools and basic knowledge.
 
-2. 💻 [Embedded C programming fundamentals](#-Embedded-C-Programming-Fundamentals)  Core C concepts tailored for embedded development.
+2. 💻 [Embedded C programming fundamentals](#embedded-c-programming-fundamentals)   Core C concepts tailored for embedded development.
 
 3. 🤖 [Introduction to Embedded Systems](#-introduction-to-embedded-systems)  Understand what embedded systems are and how they power everyday devices.
 
