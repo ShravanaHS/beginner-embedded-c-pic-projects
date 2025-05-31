@@ -163,7 +163,7 @@ Common bitwise operators in C:
 | Operator | Description                          | Example                |
 |----------|----------------------------------|------------------------|
 | `&`      | Bitwise AND                       | `result = a & b;`      |
-| `|`      | Bitwise OR                        | `result = a | b;`      |
+| `or symbol`   | Bitwise OR                        | `result = a or symbol b;`      |
 | `^`      | Bitwise XOR (exclusive OR)        | `result = a ^ b;`      |
 | `~`      | Bitwise NOT (one's complement)    | `result = ~a;`         |
 | `<<`     | Left shift (shifts bits left)     | `a << 2` shifts bits 2 positions left |
@@ -183,6 +183,7 @@ flags &= ~(1 << 1);    // Clear bit 1
 // ~(1 << 1) = 11111101  
 // flags = 00000100 & 11111101 = 00000100 (bit 1 was already 0, no change)
 ```
+
 
 #### 8. Preprocessor Directives and Macros
 
