@@ -11,9 +11,9 @@ To build and simulate our embedded systems, we’ll use only free and beginner-f
 
 ## 📚 Table of Contents
 
-1. 🔑 [Prerequisites & Setup](#-prerequisites--setup)  What you need before diving in, including tools and basic knowledge.
+1. 🔑 [Prerequisites & Setup](#-prerequisites-&-setup)  What you need before diving in, including tools and basic knowledge.
 
-2. 💻 [Embedded C Essentials](#-embedded-c-essentials)  Core C concepts tailored for embedded development.
+2. 💻 [Embedded C programming fundamentals](#-Embedded-C-Programming-Fundamentals)  Core C concepts tailored for embedded development.
 
 3. 🤖 [Introduction to Embedded Systems](#-introduction-to-embedded-systems)  Understand what embedded systems are and how they power everyday devices.
 
@@ -31,7 +31,7 @@ To build and simulate our embedded systems, we’ll use only free and beginner-f
 
 ---
 
-## 🔑 Prerequisites & Setup
+## Prerequisites & Setup
 
 Before diving into embedded systems design, it’s important to have some foundational knowledge and tools ready. This section covers the basics you should be comfortable with and the software you need to install.
 
@@ -76,7 +76,7 @@ Make sure you have:
 Once these are set up, you are ready to start learning embedded C and microcontroller programming!
 
 ---
-## 💻 Embedded C Programming Fundamentals
+## Embedded C Programming Fundamentals
 
 Embedded C is a variant of the C language tailored to program microcontrollers and embedded devices. You will use many common C features, but with a focus on controlling hardware.
 
@@ -116,9 +116,13 @@ for (int i = 0; i < 5; i++) {
 }
 ```
 
-####4. Conditional Statements (if, else, switch)
-Make decisions based on conditions.
+#### 4. Conditional Statements (`if`, `else`, `switch`)
 
+Conditional statements are used to make decisions based on certain conditions.  
+If the condition is true, one task is performed; otherwise, another task is executed.
+
+**Example:**  
+If the LDR value is less than the threshold value, turn **ON** the LED; otherwise, turn **OFF** the LED.
 
 ```c
 if (temperature > 30) {
@@ -129,13 +133,17 @@ if (temperature > 30) {
 ```
 
 #### 5. Functions
-Group reusable code blocks.
 
+Functions allow you to group reusable code blocks into a single unit.  
+When you need to perform a specific task multiple times, you can call the function instead of rewriting the code.
+
+**Example:**
+If you want to rotate your motor multiple times in different direction you can use functions.
 ```c
 void turnOnLED() {
     // Code to turn on LED
 }
-```
+
 
 #### 6. Pointers
 Directly access memory addresses, essential for hardware registers.
@@ -146,31 +154,81 @@ volatile uint8_t *portA = (volatile uint8_t *)0x05;  // Example address
 ```
 
 #### 7. Bitwise Operators
-Manipulate individual bits in a byte or register.
+
+Bitwise operators allow you to manipulate individual bits within a byte or register.  
+These operators work directly on the binary representation of data, making them very useful in embedded systems, low-level programming, and situations where memory or speed is critical.
+
+Common bitwise operators in C:
+
+| Operator | Description                          | Example                |
+|----------|----------------------------------|------------------------|
+| `&`      | Bitwise AND                       | `result = a & b;`      |
+| `|`      | Bitwise OR                        | `result = a | b;`      |
+| `^`      | Bitwise XOR (exclusive OR)        | `result = a ^ b;`      |
+| `~`      | Bitwise NOT (one's complement)    | `result = ~a;`         |
+| `<<`     | Left shift (shifts bits left)     | `a << 2` shifts bits 2 positions left |
+| `>>`     | Right shift (shifts bits right)   | `a >> 3` shifts bits 3 positions right|
+
+### Practical Examples:
 
 ```c
-uint8_t flags = 0x00;
-flags |= (1 << 2);    // Set bit 2
-flags &= ~(1 << 1);   // Clear bit 1
+uint8_t flags = 0x00;  // 00000000 in binary
+
+flags |= (1 << 2);     // Set bit 2  
+// Explanation: (1 << 2) = 00000100  
+// flags = 00000000 | 00000100 = 00000100
+
+flags &= ~(1 << 1);    // Clear bit 1  
+// Explanation: (1 << 1) = 00000010  
+// ~(1 << 1) = 11111101  
+// flags = 00000100 & 11111101 = 00000100 (bit 1 was already 0, no change)
 ```
 
 #### 8. Preprocessor Directives and Macros
-Simplify code with constants and reusable snippets.
+
+Preprocessor directives are commands that are processed **before** the actual compilation of your C code.  
+They instruct the compiler to perform specific actions like defining constants, including files, or conditional compilation.
+
+
+### What are Macros?
+
+Macros are pieces of code or constants defined using the `#define` directive.  
+They are replaced by the preprocessor wherever they appear in the code **before** compilation.
+
+
+### Why use Macros?
+
+- **Improve readability:** Replace hard-coded values with meaningful names.
+- **Ease maintenance:** Change the value in one place rather than many.
+- **Reuse code snippets:** Create inline code snippets for common tasks.
+- **Conditional compilation:** Compile parts of code selectively.
+
+
+
+### Basic Constant Macro Example
 
 ```c
 #define LED_PIN 5
 
-PORTA |= (1 << LED_PIN);   // Turn on LED connected to pin 5
+void turnOnLED() {
+    PORTA |= (1 << LED_PIN);  // Set bit LED_PIN in PORTA to turn on LED
+}
 ```
+
 #### Important Embedded C Notes
-No standard input/output (like printf) unless you add libraries or serial communication.
 
-Use the volatile keyword for variables that may change unexpectedly (e.g., hardware registers or interrupt flags).
+- **No standard input/output**  
+  Embedded systems often do **not** support standard input/output functions like `printf` by default.  
+  To use these, you typically need to add specific libraries or implement serial communication protocols (e.g., UART).
 
-```
+- **Use the `volatile` keyword**  
+  Variables that can change unexpectedly, such as hardware registers, flags set in interrupts, or shared variables in concurrent environments, **must** be declared with the `volatile` keyword.  
+  This prevents the compiler from optimizing out necessary reads or writes, ensuring the program always accesses the actual hardware value.
+
+```c
 volatile uint8_t sensorFlag = 0;
 ```
-
+---
 ###  Recommended Beginner Resources
 
 - [🔗 GreatScott! Embedded C Programming Basics – YouTube](https://www.youtube.com/watch?v=k3_fodtGmGU)
