@@ -23,7 +23,8 @@ To build and simulate our embedded systems, we’ll use only free and beginner-f
 
 6. 💡 [First Project: LED Blinking](#-first-project-led-blinking)  Hands-on with your very first embedded project.
 
-7. 🌀 [Washing Machine Simulation Project](https://github.com/YourUsername/Washing-Machine-Simulation-Project) Step-by-step building and simulating a real-life application.(**Different Repository**)
+7. 🌀 [Washing Machine Simulation Project](https://github.com/YourUsername/Washing-Machine-Simulation-Project) Step-by-step building and simulating a real-life application.
+   (**Creating Different Repository find project file in files section**)
 
 ---
 
