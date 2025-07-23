@@ -684,11 +684,10 @@ Here's a GIF demonstrating the simulation:
 ### 📚 Resources
 
 - [📄 PIC16F877A Datasheet](https://ww1.microchip.com/downloads/en/devicedoc/39582b.pdf)  
-- [🎥 PIC Timers Tutorial – YouTube](https://www.youtube.com/watch?v=rbCoxZy8ODw)
-- [🔗 Microcontrollers vs Microprocessors – Embedded Systems Basics (YouTube)](https://www.youtube.com/watch?v=lU6CLyq3YjI)
-- [🔗 Microcontroller Pinout Explanation – Engineers World](https://www.youtube.com/watch?v=EkzCZn3vJpI)
+- [🎥 PIC Tutorial – YouTube by SM Training Academy (whole playlist)](https://youtu.be/210ForgwE3Y?si=HJblcyCw8VdnA42x)
+- [🔗 Microcontrollers vs Microprocessors – All About Electronics (YouTube)](https://www.youtube.com/watch?v=dcNk0urQsQM&t=1s)
 - [📄 Embedded System Design PDF by Sathyabama University](https://sist.sathyabama.ac.in/sist_coursematerial/uploads/SECA1603.pdf)
-- [🔗 Microcontrollers Introduction – TutorialsPoint](https://www.tutorialspoint.com/microprocessor/microcontrollers.htm)
+
 
 
 
