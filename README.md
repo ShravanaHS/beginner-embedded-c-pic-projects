@@ -25,9 +25,6 @@ To build and simulate our embedded systems, we’ll use only free and beginner-f
 
 7. 🌀 [Washing Machine Simulation Project](#-washing-machine-simulation-project)  Step-by-step building and simulating a real-life application.
 
-8. 🧪 [Using PICSimLab for Simulation](#-using-picsimlab-for-simulation)  How to run your projects in a powerful simulator.
-
-9. 🎯 [Wrap Up & Next Steps](#-wrap-up--next-steps)  Summary and recommended resources to keep learning.
 
 ---
 
@@ -230,15 +227,6 @@ void turnOnLED() {
 volatile uint8_t sensorFlag = 0;
 ```
 
-###  Recommended Beginner Resources
-
-- [🔗 GreatScott! Embedded C Programming Basics – YouTube](https://www.youtube.com/watch?v=k3_fodtGmGU)
-- [🔗 Arduino Bitwise Operators Explained – DroneBot Workshop](https://dronebotworkshop.com/arduino-bitwise-operators/)
-- [🔗 Pointers in C – GeeksforGeeks](https://www.geeksforgeeks.org/pointers-in-c-language-set-1-introduction-arithmetic-and-array/)
-- and many more.
-
----
-
 
 ##   Introduction to Embedded Systems
 
@@ -305,11 +293,9 @@ here in this project washing machine firmware (C code) runs on a PIC16F877A MCU,
 
 </p>
 
-### 📄 Further Reading
 
 - [📘 Sathyabama Embedded Systems Notes (PDF)](https://sist.sathyabama.ac.in/sist_coursematerial/uploads/SECA1603.pdf)
-- [🔗 What is Embedded System? – Neso Academy](https://www.youtube.com/watch?v=OzT9e8Phipo)  
-- [🔗 Embedded Systems in Real Life – Great Learning](https://www.youtube.com/watch?v=3e0yq5HBnpU)  
+ 
 
 
 ---
@@ -378,7 +364,7 @@ The PIC16F877A Datasheet details:
 
 
 ---
-
+## inside a microcontroller gpios clocks more
 ### 🕹️ GPIOs (General Purpose Input/Output)
 
 **What they are:** Imagine your microcontroller has many "digital doors" or "switches." These are GPIO pins. You can configure each "door" to be either:
