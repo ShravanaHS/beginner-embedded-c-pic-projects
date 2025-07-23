@@ -364,8 +364,7 @@ The PIC16F877A Datasheet details:
 
 
 ---
-## inside a microcontroller gpios clocks more
-### 🕹️ GPIOs (General Purpose Input/Output)
+## inside a microcontroller gpios clocks  more 
 
 **What they are:** Imagine your microcontroller has many "digital doors" or "switches." These are GPIO pins. You can configure each "door" to be either:
 * **Input:** To read if a button is pressed, or if a sensor sends a HIGH/LOW signal.
