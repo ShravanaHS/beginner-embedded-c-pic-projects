@@ -19,12 +19,11 @@ To build and simulate our embedded systems, we’ll use only free and beginner-f
 
 4. 🧠 [Microcontroller Fundamentals](#-microcontroller-fundamentals)  Key components, pinouts, and datasheets demystified.
 
-5. ⚙️ [Inside a Microcontroller: GPIOs, Clocks & More](#-inside-a-microcontroller-gpios-clocks--more)  Learn how microcontrollers work internally.
+5. ⚙️ [Inside a Microcontroller: GPIOs, Clocks & More](#inside-a-microcontroller-gpios-clocks--more) Learn how microcontrollers work internally.
 
 6. 💡 [First Project: LED Blinking](#-first-project-led-blinking)  Hands-on with your very first embedded project.
 
-7. 🌀 [Washing Machine Simulation Project](#-washing-machine-simulation-project)  Step-by-step building and simulating a real-life application.
-
+7. 🌀 [Washing Machine Simulation Project](https://github.com/YourUsername/Washing-Machine-Simulation-Project) Step-by-step building and simulating a real-life application.(**Different Repository**)
 
 ---
 
@@ -364,7 +363,7 @@ The PIC16F877A Datasheet details:
 
 
 ---
-## inside a microcontroller gpios clocks  more 
+## Inside a Microcontroller: GPIOs, Clocks & More 
 
 **What they are:** Imagine your microcontroller has many "digital doors" or "switches." These are GPIO pins. You can configure each "door" to be either:
 * **Input:** To read if a button is pressed, or if a sensor sends a HIGH/LOW signal.
@@ -550,34 +549,30 @@ uint16_t result = (ADRESH << 8) | ADRESL; // 10-bit ADC result
 ---
 
 
-
-
-
-
 ## First Project: LED Blinking
 The "Hello World" of Embedded Systems
 Every journey in programming often starts with a simple "Hello World!" program. In the world of embedded systems, the equivalent is usually "LED Blinking." This project might seem basic, but it's incredibly powerful as your first hands-on experience. It teaches you the fundamental concepts of:
 
-**Output Control**: How to make the microcontroller turn something ON and OFF.
+    **Output Control**: How to make the microcontroller turn something ON and OFF.
 
-**Basic Timing**: How to introduce delays to control the speed of operations.
+    **Basic Timing**: How to introduce delays to control the speed of operations.
 
-**Microcontroller Configuration**: Setting up the MCU to work as expected.
+    **Microcontroller Configuration**: Setting up the MCU to work as expected.
 
 By making an LED blink, you're directly interacting with the microcontroller's hardware, which is the core of embedded programming!
 
 ### Components and Circuit Overview (all are pre connected in develpoment board)
 For this project, we'll simulate the following components:
 
-**PIC16F877A Microcontroller**: Our "brain" for the project.
+    **PIC16F877A Microcontroller**: Our "brain" for the project.
 
-**LED (Light Emitting Diode)**: The light source we'll blink.
+    **LED (Light Emitting Diode)**: The light source we'll blink.
 
-**Resistor (e.g., 220-330 Ohm)**: Essential to limit the current flowing through the LED and protect it from burning out.
+    **Resistor (e.g., 220-330 Ohm)**: Essential to limit the current flowing through the LED and protect it from burning out.
 
-**Crystal Oscillator (e.g., 20 MHz)**: Provides the precise clock signal for the PIC16F877A to operate.
+    **Crystal Oscillator (e.g., 20 MHz)**: Provides the precise clock signal for the PIC16F877A to operate.
 
-**Capacitors (e.g., 22pF)**: Used with the crystal oscillator for stable clock generation.
+    **Capacitors (e.g., 22pF)**: Used with the crystal oscillator for stable clock generation.
 
 ### Simple Circuit Concept:
 We will connect an LED (with a current-limiting resistor in series) to one of the microcontroller's output pins. In our code, we'll specifically use PORTB, which means the LED will be connected to one of the pins on this port (e.g., RB0, RB1, etc.). When the pin is set to HIGH, the LED turns on; when set to LOW, it turns off. but here in this case in picsimLab we are assigning entire PORTB output R0-R7 are connected to LEDs. we are blinking it.
@@ -585,15 +580,15 @@ We will connect an LED (with a current-limiting resistor in series) to one of th
 ### Understanding the Code
 Before we look at the code, let's understand its logic:
 
-**Include Header**: We'll include a special file (xc.h) that gives us all the definitions for our PIC microcontroller and useful functions.
+    **Include Header**: We'll include a special file (xc.h) that gives us all the definitions for our PIC microcontroller and useful functions.
 
-**Configuration Bit**s: These are like initial settings for the microcontroller (e.g., how fast it runs, if it has a "watchdog" to prevent it from freezing). We'll set these up once.
+    **Configuration Bit**s: These are like initial settings for the microcontroller (e.g., how fast it runs, if it has a "watchdog" to prevent it from freezing).       We'll set these up once.
 
-**Define Clock Frequency**: We tell the compiler the speed of our crystal so that any delay functions we use can calculate the time accurately.
+    **Define Clock Frequency**: We tell the compiler the speed of our crystal so that any delay functions we use can calculate the time accurately.
 
-**Initialize I/O**: We'll set up the specific pins we're using (in this case, PORTB) as outputs, so the microcontroller knows it's supposed to control them.
+    **Initialize I/O**: We'll set up the specific pins we're using (in this case, PORTB) as outputs, so the microcontroller knows it's supposed to control them.
 
-**Main Loop**: The heart of our program is an infinite loop. Inside this loop, we'll:
+    **Main Loop**: The heart of our program is an infinite loop. Inside this loop, we'll:
 
 Turn the LED(s) ON by setting the output pin(s) to a HIGH logic level.
 
@@ -690,18 +685,8 @@ Here's a GIF demonstrating the simulation:
 
 - [📄 PIC16F877A Datasheet](https://ww1.microchip.com/downloads/en/devicedoc/39582b.pdf)  
 - [🎥 PIC Timers Tutorial – YouTube](https://www.youtube.com/watch?v=rbCoxZy8ODw)
-
-
-
-### 📽️ YouTube Resources
-
 - [🔗 Microcontrollers vs Microprocessors – Embedded Systems Basics (YouTube)](https://www.youtube.com/watch?v=lU6CLyq3YjI)
 - [🔗 Microcontroller Pinout Explanation – Engineers World](https://www.youtube.com/watch?v=EkzCZn3vJpI)
-
----
-
-### 📚 More Reading
-
 - [📄 Embedded System Design PDF by Sathyabama University](https://sist.sathyabama.ac.in/sist_coursematerial/uploads/SECA1603.pdf)
 - [🔗 Microcontrollers Introduction – TutorialsPoint](https://www.tutorialspoint.com/microprocessor/microcontrollers.htm)
 
