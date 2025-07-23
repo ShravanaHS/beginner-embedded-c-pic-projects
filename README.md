@@ -549,7 +549,7 @@ uint16_t result = (ADRESH << 8) | ADRESL; // 10-bit ADC result
 ---
 
 
-## First Project: LED Blinking
+## first project led blinking
 The "Hello World" of Embedded Systems
 Every journey in programming often starts with a simple "Hello World!" program. In the world of embedded systems, the equivalent is usually "LED Blinking." This project might seem basic, but it's incredibly powerful as your first hands-on experience. It teaches you the fundamental concepts of:
 
