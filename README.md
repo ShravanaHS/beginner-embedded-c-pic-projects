@@ -563,6 +563,138 @@ uint16_t result = (ADRESH << 8) | ADRESL; // 10-bit ADC result
         * Generate an I2C Stop condition (to end communication): `SSPCON2bits.PEN = 1;`
 
 ---
+
+
+
+
+
+
+## First Project: LED Blinking
+The "Hello World" of Embedded Systems
+Every journey in programming often starts with a simple "Hello World!" program. In the world of embedded systems, the equivalent is usually "LED Blinking." This project might seem basic, but it's incredibly powerful as your first hands-on experience. It teaches you the fundamental concepts of:
+
+**Output Control**: How to make the microcontroller turn something ON and OFF.
+
+**Basic Timing**: How to introduce delays to control the speed of operations.
+
+**Microcontroller Configuration**: Setting up the MCU to work as expected.
+
+By making an LED blink, you're directly interacting with the microcontroller's hardware, which is the core of embedded programming!
+
+### Components and Circuit Overview (all are pre connected in develpoment board)
+For this project, we'll simulate the following components:
+
+**PIC16F877A Microcontroller**: Our "brain" for the project.
+
+**LED (Light Emitting Diode)**: The light source we'll blink.
+
+**Resistor (e.g., 220-330 Ohm)**: Essential to limit the current flowing through the LED and protect it from burning out.
+
+**Crystal Oscillator (e.g., 20 MHz)**: Provides the precise clock signal for the PIC16F877A to operate.
+
+**Capacitors (e.g., 22pF)**: Used with the crystal oscillator for stable clock generation.
+
+### Simple Circuit Concept:
+We will connect an LED (with a current-limiting resistor in series) to one of the microcontroller's output pins. In our code, we'll specifically use PORTB, which means the LED will be connected to one of the pins on this port (e.g., RB0, RB1, etc.). When the pin is set to HIGH, the LED turns on; when set to LOW, it turns off. but here in this case in picsimLab we are assigning entire PORTB output R0-R7 are connected to LEDs. we are blinking it.
+
+### Understanding the Code
+Before we look at the code, let's understand its logic:
+
+**Include Header**: We'll include a special file (xc.h) that gives us all the definitions for our PIC microcontroller and useful functions.
+
+**Configuration Bit**s: These are like initial settings for the microcontroller (e.g., how fast it runs, if it has a "watchdog" to prevent it from freezing). We'll set these up once.
+
+**Define Clock Frequency**: We tell the compiler the speed of our crystal so that any delay functions we use can calculate the time accurately.
+
+**Initialize I/O**: We'll set up the specific pins we're using (in this case, PORTB) as outputs, so the microcontroller knows it's supposed to control them.
+
+**Main Loop**: The heart of our program is an infinite loop. Inside this loop, we'll:
+
+Turn the LED(s) ON by setting the output pin(s) to a HIGH logic level.
+
+Wait for a short period.
+
+Turn the LED(s) OFF by setting the output pin(s) to a LOW logic level.
+
+Wait for another short period.
+
+This cycle repeats forever, creating the blinking effect.
+
+In the provided code, instead of using the built-in __delay_ms() function (which typically relies on the _XTAL_FREQ definition), a simple for loop is used to create a delay. This is a common manual delay technique, though __delay_ms() is generally more precise if _XTAL_FREQ is correctly defined and utilized.
+
+### **The Code**
+Here is the C code for our LED blinking project:
+```
+/*
+ * File:   blinkingled.c
+ * Author: shravana HS
+ *
+ * Created on 23 July, 2025, 1:30 PM
+ */
+
+#include <xc.h> // Required for PIC microcontroller definitions and functions
+
+// --- CONFIGURATION BITS ---
+// These are crucial settings for the PIC microcontroller.
+// You can generate these in MPLAB X IDE: Window -> PIC Memory Views -> Configuration Bits
+#pragma config FOSC = HS    // Oscillator Selection bits (HS oscillator for external crystal)
+#pragma config WDTE = OFF   // Watchdog Timer Enable bit (WDT disabled for this example)
+#pragma config PWRTE = OFF  // Power-up Timer Enable bit (PWRT disabled)
+#pragma config BOREN = ON   // Brown-out Reset Enable bit (BOR enabled)
+#pragma config LVP = OFF    // Low-Voltage Programming Enable bit (disabled for more I/O pins)
+#pragma config CPD = OFF    // Data EEPROM Memory Code Protection bit (disabled)
+#pragma config WRT = OFF    // Flash Program Memory Write Enable bits (disabled)
+#pragma config CP = OFF     // Flash Program Memory Code Protection bit (disabled)
+
+// --- Define the crystal frequency ---
+// This is used for timing, though a manual loop is used for delay in this specific code.
+#define _XTAL_FREQ 20000000 // Define 20MHz crystal frequency (adjust if you use a different one)
+
+// Function to initialize the microcontroller's configuration
+static void init_config(void) {
+    // Configure PORTB as output
+    // TRISB register controls the direction of PORTB pins.
+    // Setting all bits to 0 makes all PORTB pins OUTPUTS.
+    TRISB = 0x00;
+
+    // Initially set all PORTB pins to LOW (LEDs OFF)
+    PORTB = 0x00;
+}
+
+void main(void) {
+    // Call the initialization function
+    init_config();
+
+    while (1) { // Infinite loop for continuous operation
+        // Turn all LEDs connected to PORTB ON
+        // Setting all bits of PORTB to 1 (0xFF) makes all pins HIGH.
+        PORTB = 0xFF;
+
+        // Manual delay loop
+        // This loop runs a fixed number of times to create a pause.
+        for (unsigned long i = 50000; i-- ;); // Note: 'unsigned long' is safer than 'unsigned int long' here
+
+        // Turn all LEDs connected to PORTB OFF
+        // Setting all bits of PORTB to 0 (0x00) makes all pins LOW.
+        PORTB = 0x00;
+
+        // Manual delay loop
+        for (unsigned long i = 50000; i--; ); // Note: 'unsigned long' is safer than 'unsigned int long' here
+    }
+    // The 'return' statement here is technically unreachable due to the while(1) loop,
+    // but it's good practice for function definitions.
+    return;
+}
+```
+
+### Simulating Your Project with PICSimLab
+One of the best parts about learning embedded systems today is that you don't always need physical hardware right away!you can simulate it in software tools like PICSimLab that allows us to run our .hex file and see the LED blinking virtually.
+load your compiled .hex file (generated by MPLAB X IDE after building your C code) onto the simulated PIC16F877A, and then hit "Play" to see your LED blink in action!
+
+
+![Alt text for the GIF](path/to/your/simulation.gif)
+
+
 ### 📚 Resources
 
 - [📄 PIC16F877A Datasheet](https://ww1.microchip.com/downloads/en/devicedoc/39582b.pdf)  
