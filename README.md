@@ -263,7 +263,6 @@ here in this project washing machine firmware (C code) runs on a PIC16F877A MCU,
 | Cost                 | Low                                 | Higher                                 |
 | Power Consumption    | Low                                 | High                                   |
 | Example              | PIC16F877A, ATmega328P              | Intel i5, ARM Cortex-A53               |
-- [Microcontroller vs Microprocessor – Simply Explained](https://www.youtube.com/watch?v=fRxAUzYxoJg)
 
 
 ### 🛠️ Embedded System Design Flow (Washing Machine)
